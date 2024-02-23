@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
+const Articles = require("./artides/Articles");
+const Category = require("./categories/Category");
 
 //Router
 const CategoriesController = require("./categories/CategoriesController");

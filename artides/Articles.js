@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 const connection = require("../database/database");
+const Category = require("../categories/Category");
 
 const Articles = connection.define("articles", {
   title: {
@@ -15,5 +16,9 @@ const Articles = connection.define("articles", {
     allowNull: false,
   },
 });
+
+//Relationship between articles and category
+Category.hasMany(Articles); //one for many
+Articles.belongsTo(Category); //one to one
 
 module.exports = Articles;
