@@ -24,4 +24,3 @@ Junte-se ao Bug Overflow Blog - onde a segurança é a nossa prioridade!
 ## Licença
 
 Este projeto é licenciado sob a [Licença MIT](LICENSE).
-

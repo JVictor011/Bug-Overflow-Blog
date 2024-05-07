@@ -1,0 +1,57 @@
+<%-include('../../partials/header.ejs')%>
+<%-include('../../partials/navbar.ejs')%>
+
+<div class="container">
+  <hr />
+  <div class="card">
+    <div class="card-header">
+      <h2>Novo artigo</h2>
+    </div>
+    <div class="card-body">
+      <form method="POST" action="">
+        <input
+          class="form-control"
+          type="text"
+          name="title"
+          placeholder="Defina o titulo do artigo"
+        />
+        <br />
+        <textarea
+          class="form-control"
+          name="body"
+          id="articleTextarea"
+          placeholder="Escreva o artigo aqui!"
+        ></textarea>
+        <br />
+        <label for="">Categoria</label>
+        <select class="form-control" name="category">
+          <option value="" disabled selected>Selecione uma categoria</option>
+          <% categories.forEach((category) => { %>
+          <option value="<%=category.id%>"><%=category.title%></option>
+          <% }) %></select
+        ><br />
+        <button class="btn btn-success" id="btn-padrao">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%-include('../../partials/footer.ejs')%>
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+  tinymce.init({
+    language: "pt_BR",
+    selector: "#articleTextarea",
+    height: 500,
+    menubar: true,
+    plugins: [
+      "advlist autolink lists link image charmap print preview anchor",
+      "searchreplace visualblocks code fullscreen",
+      "insertdatetime media table paste code help wordcount",
+    ],
+    toolbar:
+      "undo redo | formatselect | bold italic backcolor | \
+      alignleft aligncenter alignright alignjustify | \
+      bullist numlist outdent indent | removeformat | help",
+  });
+</script>
