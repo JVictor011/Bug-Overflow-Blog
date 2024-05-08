@@ -8,7 +8,7 @@
       <h2>Novo artigo</h2>
     </div>
     <div class="card-body">
-      <form method="POST" action="">
+      <form id="articleForm" method="POST" action="/articles/save">
         <input
           class="form-control"
           type="text"
@@ -24,34 +24,32 @@
         ></textarea>
         <br />
         <label for="">Categoria</label>
-        <select class="form-control" name="category">
+        <select id="categorySelect" class="form-control" name="category">
           <option value="" disabled selected>Selecione uma categoria</option>
           <% categories.forEach((category) => { %>
           <option value="<%=category.id%>"><%=category.title%></option>
           <% }) %></select
         ><br />
-        <button class="btn btn-success" id="btn-padrao">Cadastrar</button>
+        <button class="btn btn-success" id="btn-padrao" type="submit">
+          Cadastrar
+        </button>
       </form>
     </div>
   </div>
 </div>
 
 <%-include('../../partials/footer.ejs')%>
-<script src="/tinymce/tinymce.min.js"></script>
+<%-include('../../partials/tinymce.ejs')%>
 <script>
-  tinymce.init({
-    language: "pt_BR",
-    selector: "#articleTextarea",
-    height: 500,
-    menubar: true,
-    plugins: [
-      "advlist autolink lists link image charmap print preview anchor",
-      "searchreplace visualblocks code fullscreen",
-      "insertdatetime media table paste code help wordcount",
-    ],
-    toolbar:
-      "undo redo | formatselect | bold italic backcolor | \
-      alignleft aligncenter alignright alignjustify | \
-      bullist numlist outdent indent | removeformat | help",
-  });
+  document
+    .getElementById("articleForm")
+    .addEventListener("submit", function (event) {
+      var categorySelect = document.getElementById("categorySelect");
+      if (categorySelect.value === "") {
+        alert(
+          "Por favor, selecione uma categoria antes de enviar o formulário."
+        );
+        event.preventDefault();
+      }
+    });
 </script>
