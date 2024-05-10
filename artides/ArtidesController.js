@@ -90,4 +90,31 @@ router.get("/admin/articles/edit/:id", async (req, res) => {
   }
 });
 
+router.post("/admin/articles/update", (req, res) => {
+  const id = req.body.id;
+  const title = req.body.title;
+  const body = req.body.body;
+  const category = req.body.category;
+
+  Articles.update(
+    {
+      title: title,
+      slug: slugify(title).toLowerCase(),
+      body: body,
+      categoriaId: category,
+    },
+    {
+      where: {
+        id: id,
+      },
+    }
+  )
+    .then(() => {
+      res.redirect("/admin/articles");
+    })
+    .catch(() => {
+      res.status(500).send("Erro ao atualizar artigo.");
+    });
+});
+
 module.exports = router;

@@ -22,7 +22,7 @@
         <th><%=article.title%></th>
         <th><%=article.slug%></th>
         <th><%=article.categoria.title%></th>
-        <th>
+        <th class="text-center">
           <a
             href="/admin/articles/edit/<%=article.id%>"
             type="button"
@@ -32,7 +32,7 @@
           <form
             method="POST"
             action="/articles/delete"
-            style="display: inline"
+            style="margin-top: 10px"
             onsubmit="confirmarDelete(event, this)"
           >
             <input type="hidden" name="id" value="<%=article.id%>" />
