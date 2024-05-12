@@ -1,8 +1,39 @@
 <%-include('partials/header.ejs')%> <%-include('partials/homeNavbar.ejs')%>
 <body>
-  <%articles.forEach((article) => {%>
   <br />
   <div class="container">
+    <div id="jumbotronHome" class="jumbotron text-center">
+      <h1 class="display-4">Bug Overflow Blog</h1>
+      <p class="lead">
+        Bem-vindo ao Bug Overflow Blog, seu hub para explorar o fascinante mundo
+        da segurança cibernética e descobrir as nuances dos bugs e
+        vulnerabilidades.
+      </p>
+      <hr class="my-4" />
+      <p class="lead">Recursos Destacados</p>
+      <ul class="list-unstyled">
+        <li>
+          🐞 Exploração de Bugs: Artigos detalhados sobre a identificação e
+          exploração de bugs.
+        </li>
+        <li>
+          🔐 Segurança Cibernética: Análises de tendências, ameaças emergentes e
+          estratégias de defesa.
+        </li>
+        <li>
+          🛠️ Ferramentas e Tutoriais: Recursos práticos para aprimorar suas
+          habilidades em segurança e desenvolvimento seguro.
+        </li>
+        <li>
+          🌐 Comunidade Ativa: Participe, contribua e conecte-se com outros
+          entusiastas de segurança cibernética.
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <%articles.forEach((article) => {%>
+    <br />
     <div class="card text-center">
       <div class="card-header">Username</div>
       <div class="card-body">
@@ -17,7 +48,12 @@
         Date(article.updatedAt).toLocaleDateString('pt-BR', optionsFormar)%>
       </div>
     </div>
+    <%})%>
+    <br />
+    <div class="row">
+      <div class="col col-12"><a href="/articles/page/2" id="nextIndex">Next >>></a></div>
+    </div>
   </div>
-  <%})%>
+  <br />
 </body>
 <%-include('partials/footer.ejs')%>

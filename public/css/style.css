@@ -17,3 +17,17 @@ body {
   font-family: "DM sans", sans-serif;
   color: aliceblue;
 }
+
+#jumbotronHome {
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  font-family: "DM sans", sans-serif;
+}
+
+#nextIndex {
+  float: right;
+}
+
+#prevIndex {
+  float: left;
+}

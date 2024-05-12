@@ -36,7 +36,8 @@ app.use("/", ArtidesController);
 app.get("/", async (req, res) => {
   try {
     const articles = await Articles.findAll({
-      order: [["createdAt", "DESC"]],
+      order: [["id", "DESC"]],
+      limit: 4,
       include: [{ model: Category }],
     });
 
