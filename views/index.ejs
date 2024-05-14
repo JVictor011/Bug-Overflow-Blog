@@ -50,9 +50,18 @@
     </div>
     <%})%>
     <br />
-    <div class="row">
-      <div class="col col-12"><a href="/articles/page/2" id="nextIndex">Next >>></a></div>
-    </div>
+    <nav aria-label="...">
+      <ul class="pagination" id="prevIndex">
+        <li class="page-item disabled">
+          <a class="page-link">Previous</a>
+        </li>
+      </ul>
+      <ul class="pagination" id="nextIndex">
+        <li class="page-item">
+          <a class="page-link" href="/articles/page/2">Next >>></a>
+        </li>
+      </ul>
+    </nav>
   </div>
   <br />
 </body>

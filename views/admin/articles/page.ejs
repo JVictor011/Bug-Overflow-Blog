@@ -20,17 +20,31 @@
     </div>
     <%})%>
     <br />
-    <div class="row">
-      <div class="col col-12">
-        <%if(result.next){%>
-        <a href="/articles/page/<%=result.page+1%>" id="nextIndex">Next >>></a>
-        <%}%> <%if(result.page > 2){%>
-        <a href="/articles/page/<%=result.page-1%>" id="prevIndex"><<< Prev</a>
-        <%}else if(result.page == 2){%>
-        <a href="/" id="prevIndex"><<< Prev</a>
-        <%}%>
-      </div>
-    </div>
+    <nav aria-label="...">
+      <%if(result.next){%>
+      <ul class="pagination" id="nextIndex">
+        <li class="page-item">
+          <a class="page-link" href="/articles/page/<%=result.page+1%>"
+            >Next >>></a
+          >
+        </li>
+      </ul>
+      <%}%> <%if(result.page > 2){%>
+      <ul class="pagination" id="prevIndex">
+        <li class="page-item">
+          <a class="page-link" href="/articles/page/<%=result.page-1%>"
+            ><<< Prev</a
+          >
+        </li>
+      </ul>
+      <%}else if(result.page == 2){%>
+      <ul class="pagination" id="prevIndex">
+        <li class="page-item">
+          <a class="page-link" href="/"><<< Prev</a>
+        </li>
+      </ul>
+      <%}%>
+    </nav>
   </div>
   <br />
 </body>

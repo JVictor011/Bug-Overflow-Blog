@@ -4,11 +4,13 @@ const bodyParser = require("body-parser");
 const connection = require("./database/database");
 const Articles = require("./artides/Articles");
 const Category = require("./categories/Category");
+const User = require("./user/User");
 const optionsFormar = require("./utils/optionsFormar");
 
 //Router
 const CategoriesController = require("./categories/CategoriesController");
 const ArtidesController = require("./artides/ArtidesController");
+const UserController = require("./user/UserController");
 
 app.set("view engine", "ejs");
 
@@ -32,6 +34,7 @@ connection
 
 app.use("/", CategoriesController);
 app.use("/", ArtidesController);
+app.use("/", UserController);
 
 app.get("/", async (req, res) => {
   try {
