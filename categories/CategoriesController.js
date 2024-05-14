@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Category = require("./Category");
 const slugify = require("slugify");
-const { where } = require("sequelize");
 
 router.get("/admin/categoris/new", (req, res) => {
   res.render("admin/categoris/new");
