@@ -2,10 +2,13 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
+
+const optionsFormar = require("./utils/optionsFormar");
+const session = require("express-session");
+
 const Articles = require("./artides/Articles");
 const Category = require("./categories/Category");
 const User = require("./user/User");
-const optionsFormar = require("./utils/optionsFormar");
 
 //Router
 const CategoriesController = require("./categories/CategoriesController");
@@ -13,6 +16,14 @@ const ArtidesController = require("./artides/ArtidesController");
 const UserController = require("./user/UserController");
 
 app.set("view engine", "ejs");
+
+//Session
+app.use(
+  session({
+    secret: "ihnahgadf4988#$dfdT_",
+    cookie: { maxAge: 60000 },
+  })
+);
 
 app.use(express.static("public"));
 
@@ -57,6 +68,7 @@ app.get("/", async (req, res) => {
       articles: articles,
       optionsFormar: optionsFormar,
       categoris: categoris,
+      userAuth: req.session.user,
     });
   } catch (erro) {
     res.status(500).send("Erro ao recuperar artigos");

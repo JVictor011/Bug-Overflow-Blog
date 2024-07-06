@@ -60,7 +60,7 @@ body {
 .screen__background__shape2 {
   height: 220px;
   width: 220px;
-  background: #abac63;
+  background: linear-gradient(270deg, #5d838d, #88a5aa);
   top: -172px;
   right: 0;
   border-radius: 32px;
@@ -69,7 +69,7 @@ body {
 .screen__background__shape3 {
   height: 540px;
   width: 190px;
-  background: linear-gradient(270deg, #9fa454, #999e67);
+  background: linear-gradient(270deg, #5d838d, #88a5aa);
   top: -24px;
   right: 0;
   border-radius: 32px;
@@ -78,7 +78,7 @@ body {
 .screen__background__shape4 {
   height: 400px;
   width: 200px;
-  background: #abac63;
+  background: linear-gradient(270deg, #5d838d, #88a5aa);
   top: 420px;
   right: 50px;
   border-radius: 60px;
@@ -170,7 +170,7 @@ body {
   padding: 20px 10px;
   color: #fff;
   text-decoration: none;
-  text-shadow: 0px 0px 8px #b5b475;
+  text-shadow: 0px 0px 8px #67919e;
 }
 
 .social-login__icon:hover {

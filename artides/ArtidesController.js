@@ -4,8 +4,9 @@ const Articles = require("./Articles");
 const slugify = require("slugify");
 const Category = require("../categories/Category");
 const optionsFormar = require("../utils/optionsFormar");
+const addminAuth = require("../middlewares/adminAuth");
 
-router.get("/admin/articles", (req, res) => {
+router.get("/admin/articles", addminAuth, (req, res) => {
   try {
     Articles.findAll({
       include: [{ model: Category }],
@@ -17,7 +18,7 @@ router.get("/admin/articles", (req, res) => {
   }
 });
 
-router.get("/admin/articles/new", (req, res) => {
+router.get("/admin/articles/new", addminAuth, (req, res) => {
   try {
     Category.findAll().then((categoris) => {
       res.render("admin/articles/new", { categories: categoris });
@@ -27,7 +28,7 @@ router.get("/admin/articles/new", (req, res) => {
   }
 });
 
-router.post("/articles/save", (req, res) => {
+router.post("/articles/save", addminAuth, (req, res) => {
   var title = req.body.title;
   var body = req.body.body;
   var category = req.body.category;
@@ -45,7 +46,7 @@ router.post("/articles/save", (req, res) => {
   }
 });
 
-router.post("/articles/delete", (req, res) => {
+router.post("/articles/delete", addminAuth, (req, res) => {
   var id = req.body.id;
   if (id != undefined) {
     if (!isNaN(id)) {
@@ -64,7 +65,7 @@ router.post("/articles/delete", (req, res) => {
   }
 });
 
-router.get("/admin/articles/edit/:id", async (req, res) => {
+router.get("/admin/articles/edit/:id", addminAuth, async (req, res) => {
   try {
     var id = req.params.id;
 
@@ -91,7 +92,7 @@ router.get("/admin/articles/edit/:id", async (req, res) => {
   }
 });
 
-router.post("/admin/articles/update", (req, res) => {
+router.post("/admin/articles/update", addminAuth, (req, res) => {
   const id = req.body.id;
   const title = req.body.title;
   const body = req.body.body;
@@ -163,6 +164,7 @@ router.get("/articles/page/:num", async (req, res) => {
       result: result,
       categoris: categoris,
       optionsFormar: optionsFormar,
+      userAuth: req.session.user,
     });
   } catch (erro) {
     res.status(500).send("Erro ao recuperar artigos");

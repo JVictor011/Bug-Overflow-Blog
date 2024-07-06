@@ -33,58 +33,6 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Categorias
-            </a>
-            <ul class="dropdown-menu">
-              <%categoris.forEach((category)=>{%>
-              <li>
-                <a class="dropdown-item" href="/categoris/<%=category.slug%>"
-                  ><%=category.title%></a
-                >
-              </li>
-              <%})%>
-            </ul>
-          </li>
-          <%if(userAuth){%>
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              href="/admin/articles"
-              >Admin</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              href="/admin/users/logout"
-              >Logout</a
-            >
-          </li>
-          <%}else{%>
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              href="/admin/users/create"
-              >Cadastro</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/login"
-              >Login</a
-            >
-          </li>
-          <%}%>
         </ul>
         <form class="d-flex" role="search" method="POST" action="/buscar">
           <input
